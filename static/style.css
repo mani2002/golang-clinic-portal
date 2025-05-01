@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body, html {
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #343654;
+    background: linear-gradient(120deg, #ece9f7 0%, #d9e7fa 100%);
+  }
+  
+  @media (min-width: 700px) {
+    .container.patients-list {
+      max-width: 900px;
+    }
+  }
+  
+  h1, h2 {
+    font-weight: 700;
+    color: #401f71;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    background: #fff0f1;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.3rem;
+    margin-bottom: 1rem;
+    border: 1px solid #f9b7b8;
+    text-align: center;
+  }
+  
+  
+  a {
+    color: #554fc6;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: #3225a5;
+  }

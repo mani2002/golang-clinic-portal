@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{if .patient.ID}}Edit{{else}}Add{{end}} Patient - Clinic Portal</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body {
+      background: linear-gradient(120deg, #ece9f7 0%, #d9e7fa 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #343654;
+    }
+    .container {
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 32px rgba(44,62,80,0.13);
+      width: 100%;
+      max-width: 400px;
+      margin: 3rem auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    input {
+      padding: 0.7rem;
+      border: 1px solid #b6b6d6;
+      border-radius: 0.4rem;
+      font-size: 1rem;
+      background: #faf9fb;
+      transition: border-color 0.2s;
+    }
+    input:focus {
+      border-color: #5a4ff3;
+      outline: none;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(90deg,#5a4ff3 55%, #8786fd 100%);
+      color: #fff;
+      border: none;
+      border-radius: 0.4rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.8rem;
+      box-shadow: 0 2px 12px rgba(90, 79, 243, 0.13);
+      transition: background 0.18s;
+    }
+    button:hover {
+      background: linear-gradient(90deg,#4438d3 55%, #6d6efd 100%);
+    }
+    a.btn-link {
+      margin-top: 1rem;
+      color: #554fc6;
+      display: inline-block;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a.btn-link:hover {
+      text-decoration: underline;
+      color: #3225a5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>{{if .patient.ID}}Edit{{else}}Add{{end}} Patient</h2>
+    <form method="POST" action="{{if .patient.ID}}/patients/edit/{{.patient.ID}}{{else}}/patients/new{{end}}">
+      <div class="form-group">
+        <label>Name</label>
+        <input name="name" value="{{.patient.Name}}" placeholder="Full Name" required>
+      </div>
+      <div class="form-group">
+        <label>Age</label>
+        <input name="age" value="{{.patient.Age}}" placeholder="Age" required type="number">
+      </div>
+      <div class="form-group">
+        <label>Detail</label>
+        <input name="detail" value="{{.patient.Detail}}" placeholder="Medical Detail">
+      </div>
+      <button type="submit">{{if .patient.ID}}Update{{else}}Add{{end}}</button>
+    </form>
+    <a href="/patients" class="btn-link">Back to list</a>
+  </div>
+</body>
+</html>

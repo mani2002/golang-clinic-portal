@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Clinic Portal</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body.centered-login {
+      min-height: 100vh;
+      min-width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(120deg, #ece9f7 0%, #d9e7fa 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #343654;
+    }
+    .container {
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 32px rgba(44,62,80,0.13);
+      width: 100%;
+      max-width: 400px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    input, select {
+      padding: 0.7rem;
+      border: 1px solid #b6b6d6;
+      border-radius: 0.4rem;
+      font-size: 1rem;
+      background: #faf9fb;
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus {
+      border-color: #5a4ff3;
+      outline: none;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(90deg,#5a4ff3 55%, #8786fd 100%);
+      color: #fff;
+      border: none;
+      border-radius: 0.4rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.8rem;
+      box-shadow: 0 2px 12px rgba(90, 79, 243, 0.13);
+      transition: background 0.18s;
+    }
+    button:hover {
+      background: linear-gradient(90deg,#4438d3 55%, #6d6efd 100%);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .error-message {
+      color: #e74c3c;
+      background: #fff0f1;
+      padding: 0.7rem 1.2rem;
+      border-radius: 0.3rem;
+      margin-bottom: 1rem;
+      border: 1px solid #f9b7b8;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="centered-login">
+  <div class="container">
+    <h1>Clinic Portal Login</h1>
+    {{if .error}}
+      <div class="error-message">{{.error}}</div>
+    {{end}}
+    <form method="POST" action="/login">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="e.g. user@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Your password" required />
+      </div>
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" name="role">
+          <option value="receptionist">Receptionist</option>
+          <option value="doctor">Doctor</option>
+        </select>
+      </div>
+      <button type="submit">Log In</button>
+    </form>
+  </div>
+</body>
+</html>
